@@ -1,0 +1,84 @@
+---
+sidebar_position: 1
+---
+
+import TOCInline from '@theme/TOCInline';
+
+# Installation
+<TOCInline toc={toc}/>
+
+## Requirements
+
+Ticksify is a Help Desk software built on top of the Laravel framework which has a few system requirements. You should
+ensure that your web server has the following minimum PHP version and extensions as follows:
+
+* PHP **8.1** or later
+* Mysql **5.7.8** or later
+* and the following PHP extensions _**(which on most systems will be installed by default)**_:
+* BCMath PHP Extension
+* Ctype PHP Extension
+* cURL PHP Extension
+* DOM PHP Extension
+* Exif PHP
+* Fileinfo PHP Extension
+* GD PHP extension
+* Intl PHP
+* JSON PHP Extension
+* Mbstring PHP Extension
+* OpenSSL PHP Extension
+* PCRE PHP Extension
+* PDO PHP Extension
+* Tokenizer PHP Extension
+* XML PHP Extension
+
+## Installing Ticksify on Virtual Private Server (VPS)
+
+To get Ticksify installed on your VPS you will need to download the zip archive from CodeCanyon and extract it to your
+desired directory. You may do so with this command:
+
+```bash
+unzip ticksify-x.x.x.zip -d ticksify && cd ticksify
+```
+
+:::tip
+You should replace `x.x.x` with the version number of the archive you have downloaded.
+:::
+
+Next, from your application directory run the following command to install all composer dependencies like so:
+
+```bash
+composer install
+```
+
+### Creating environment configuration file
+
+After the composer installation process is finished you will need to make a copy of **.env.example** to **.env** (this
+is where our application stores all the configuration variables). Use the following command to do so:
+
+```bash
+cp .env.example .env
+```
+
+Otherwise, you may use your text editor to create a `.env` file into your application root directory with the content
+copied from our `.env.example` file.
+
+### Creating application key
+
+The next thing you should do after installing Ticksify is to set your application key to a random string, and you may do
+it with the following command:
+
+```shell
+php artisan key:generate
+```
+
+There is an alternative way to create the application key by using your text editor to edit the `.env` file. On
+the `APP_KEY=` variable then enters the value of 32 random characters like so:
+
+```text
+APP_KEY=oxVRayeDkVduD4oUAx3TiqNYoEeTrXY
+```
+
+:::warning
+If the application key is not set, all user sessions and other encrypted data will not be secured! In fact, your
+application may not run at all.
+:::
