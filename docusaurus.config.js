@@ -67,17 +67,19 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
             // Replace with your project's social card
-            image: 'img/docusaurus-social-card.jpg',
+            image: 'img/nextgn/social-card.jpg',
             navbar: {
-                title: 'Novabolt documentation',
+                title: 'Novabolt Docs',
                 logo: {
                     alt: 'Novabolt Logo',
                     src: 'img/logo.svg',
                 },
+                hideOnScroll: true,
             },
             prism: {
                 theme: lightCodeTheme,
                 darkTheme: darkCodeTheme,
+                additionalLanguages: ['php'],
             },
         }),
 };

@@ -9,12 +9,11 @@ import TOCInline from '@theme/TOCInline';
 
 ## Requirements
 
-Ticksify is a Help Desk software built on top of the Laravel framework which has a few system requirements. You should
-ensure that your web server has the following minimum PHP version and extensions as follows:
-
+NextGN was built on top of the Laravel framework which has a few system requirements. You should ensure that your web server has the following minimum PHP version and extensions as follows:
 * PHP **8.1** or later
-* Mysql **5.7.8** or later
-* and the following PHP extensions _**(which on most systems will be installed by default)**_:
+* Mysql **8.0** or later
+
+and the following PHP extensions _(which on most systems will be installed by default)_:
 * BCMath PHP Extension
 * Ctype PHP Extension
 * cURL PHP Extension
@@ -31,54 +30,198 @@ ensure that your web server has the following minimum PHP version and extensions
 * Tokenizer PHP Extension
 * XML PHP Extension
 
-## Installing Ticksify on Virtual Private Server (VPS)
+## Installing NextGN on your local machine
 
-To get Ticksify installed on your VPS you will need to download the zip archive from CodeCanyon and extract it to your
-desired directory. You may do so with this command:
+To try NextGN on your local machine, you can follow these step-by-step instructions. NextGN is built on the Laravel framework, which supports PHP Built-in Webserver. This allows you to test the application locally before deploying it to a server.
 
-```bash
-unzip ticksify-x.x.x.zip -d ticksify && cd ticksify
-```
-
-:::tip
-You should replace `x.x.x` with the version number of the archive you have downloaded.
+:::caution
+Before you start, make sure you have configured the PHP executable path in your system environment variables so that you can run PHP commands from your terminal or command prompt.
 :::
 
-Next, from your application directory run the following command to install all composer dependencies like so:
+1. Extract the NextGN script that you downloaded from CodeCanyon. Right-click the downloaded zip archive and select "Extract" or use a file extraction tool. Choose a location on your computer where you want to store the script.
+
+2. Open your terminal or command prompt. Navigate to the directory where you extracted the NextGN script using the `cd` command. For example, if you extracted it to the "nextgn" folder on your desktop, you would use the following command:
 
 ```bash
-composer install
+cd Desktop/nextgn
 ```
 
-### Creating environment configuration file
-
-After the composer installation process is finished you will need to make a copy of **.env.example** to **.env** (this
-is where our application stores all the configuration variables). Use the following command to do so:
+Create a copy of the `.env.example` file and rename it to `.env`. This file contains the configuration variables for the application. Run the following command:
 
 ```bash
 cp .env.example .env
 ```
 
-Otherwise, you may use your text editor to create a `.env` file into your application root directory with the content
-copied from our `.env.example` file.
+Generate a new application key. In your terminal, run the following command:
 
-### Creating application key
-
-The next thing you should do after installing Ticksify is to set your application key to a random string, and you may do
-it with the following command:
-
-```shell
+```bash
 php artisan key:generate
 ```
 
-There is an alternative way to create the application key by using your text editor to edit the `.env` file. On
-the `APP_KEY=` variable then enters the value of 32 random characters like so:
+Open the `.env` file using a text editor. Update the following variables to match your local environment:
 
 ```text
-APP_KEY=oxVRayeDkVduD4oUAx3TiqNYoEeTrXY
+DB_DATABASE=<your-database-name>
+DB_USERNAME=<your-database-username>
+DB_PASSWORD=<your-database-password>
 ```
 
-:::warning
-If the application key is not set, all user sessions and other encrypted data will not be secured! In fact, your
-application may not run at all.
+Replace `<your-database-name>`, `<your-database-username>`, and `<your-database-password>` with the appropriate values for your database configuration.
+
+Migrate your database by running the following command:
+
+```shell
+php artisan migrate
+```
+
+Your NextGN site is now ready to be served. Start the PHP development server by running the following command:
+
+```bash
+php artisan serve
+```
+
+Open your web browser and visit `http://localhost:8000` to access the NextGN application.
+
+By following these steps, even if you're new to this process, you can successfully set up and run NextGN on your local machine. This allows you to explore the application's features, make customizations, and test it before deploying it to a live server.
+
+## Installing NextGN on shared hosting
+
+Shared hosting is a type of web hosting where multiple websites are hosted on a single server. In this setup, resources such as CPU, memory, and disk space are shared among the hosted websites.
+
+It's important to note that shared hosting environments may have limitations compared to dedicated or cloud-based hosting solutions. Resource constraints and server configurations imposed by the hosting provider may impact the performance or availability of your Laravel application.
+
+It is recommended to review your hosting plan and ensure it meets the requirements of running a Laravel application effectively.
+
+:::info
+There are many shared hosting providers that offer Laravel hosting plans. You can search for them on Google or other search engines. Some of the popular ones are [Hostinger](https://www.hostinger.com/laravel-hosting), [A2 Hosting](https://www.a2hosting.com/laravel-hosting), and [SiteGround](https://www.siteground.com/laravel-hosting.htm).
 :::
+
+To successfully install NextGN on your chosen hosting provider, follow the steps outlined below.
+
+#### Step 1: Uploading NextGN to your Hosting Server
+
+1. Connect to your hosting server using an FTP client like FileZilla.
+2. Upload the entire NextGN directory to the root directory of your website (not inside the `public_html` folder).
+3. Verify that the directory structure looks like this:
+
+```text
+|- ...
+|- public_html
+|- nextgn
+    - app
+    - bootstrap
+    - config
+    - database
+    - ...
+```
+
+#### Step 2: Moving Files to the public_html Folder
+
+1. Open the `nextgn` directory on your server and locate the `public` folder.
+2. Move all the files and folders inside the `public` folder to the `public_html` folder.
+3. After moving, the directory structure of your `public_html` folder should resemble this:
+
+```text
+|- ...
+|- public_html
+    |- build
+    |- img
+    |- favicon.ico
+    |- index.php
+    |- robots.txt
+|- nextgn
+    - app
+    - bootstrap
+    - config
+    - ...
+```
+
+#### Step 3: Modifying the index.php File
+
+1. Locate the `index.php` file inside the `public_html` folder.
+2. Right-click on the file and select **Edit** to open it in a code editor.
+3. Look for the following lines in the file:
+    ```php
+    require __DIR__.'/../bootstrap/autoload.php';
+    $app = require_once __DIR__.'/../bootstrap/app.php';
+    ```
+4. Replace them with the following lines:
+    ```php
+    require __DIR__.'/../nextgn/bootstrap/autoload.php';
+    $app = require_once __DIR__.'/../nextgn/bootstrap/app.php';
+    ```
+5. Save the changes and close the code editor.
+
+#### Step 4: Creating a Database
+
+1. From your hosting control panel navigate to the **Databases** section and click on **MySQL® Databases**.
+2. Under **Create a New MySQL Database And Database User**, fill in the following fields:
+    * *MySQL database name*, enter a name for your database.
+    * *MySQL username*, enter a username for your database.
+    * *Password*, enter a password for your database.
+3. Click on **Create** to create the database and user.
+
+#### Step 5: Importing the Database Tables
+
+1. Navigate to the **Databases** section and click on **phpMyAdmin**.
+2. Select the database you created from the left sidebar.
+3. Click on the **Import** tab.
+4. Click on **Choose File** and select the `nextgn.sql` file from the `nextgn/database/data` folder.
+5. Click on **Go** to import the database tables.
+
+#### Step 6: Updating the Database Configuration
+
+1. Locate the `.env` file in the `nextgn` directory.
+2. Right-click on the file and select **Edit** to open it in a text editor.
+3. Look for the following lines:
+    ```text
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_username
+    DB_PASSWORD=your_password
+    ```
+4. Replace `your_database_name`, `your_username`, and `your_password` with the appropriate values for your database configuration.
+5. Save the changes and close the file.
+
+#### Step 7: Updating the Application URL
+
+1. Open the `.env` file again.
+2. Locate the line that starts with `APP_URL=`. It should look like this:
+    ```text
+    APP_URL=http://localhost
+    ```
+3. Replace the value after the equals sign with the URL of your website.
+4. Save the changes and close the file.
+
+#### Step 8: Linking the Storage Directory
+
+1. Open the `nextgn/routes/web.php` file in a text editor.
+2. Add the following line at the end of the file:
+    ```php
+    Route::get('/linkstorage', function () {
+        Artisan::call('storage:link');
+    });
+    ```
+3. Save the file and close the editor.
+
+#### Step 9: Verifying the Storage Directory Link
+
+1. Open your web browser and visit your website's URL.
+2. Add "/linkstorage" to the end of the URL (e.g., https://example.com/linkstorage).
+3. If a blank page with no errors appears, the storage directory has been linked successfully.
+4. Remove the "/linkstorage" route from the `nextgn/routes/web.php` file.
+
+#### Step 10: Moving the Storage Directory
+
+1. Inside the `nextgn/public` folder, locate the `storage` directory.
+2. Move the `storage` directory to the same level as the `index.php` file in the `public_html` folder.
+3. Confirm that your `public_html` directory structure now looks like this:
+    ```text
+    |- build
+    |- img
+    |- storage
+    |- favicon.ico
+    |- index.php
+    |- robots.txt
+    ```
+
+That's it! You have successfully installed NextGN on your shared hosting. You can now visit your website and start using NextGN to build your store!
