@@ -7,6 +7,19 @@ import TOCInline from '@theme/TOCInline';
 # Configuration
 <TOCInline toc={toc}/>
 
+## Path to admin panel
+
+The default path to the admin panel is `/admin`. If you want to change it, follow the steps below:
+
+1. Open the `.env` file in the root directory of your NextGN application using a text editor.
+2. Add the following line at the end of the file:
+    ```text
+    ADMIN_PATH=admin
+    ```
+3. Replace the placeholder with the path you want to use (e.g., "dashboard", "control-panel", etc.).
+4. Save the changes and close the file.
+
+
 ## Email provider
 
 The NextGN application may send several types of emails to customers such as order confirmation, order status update, etc. In order to send emails, follow the steps below to configure the email settings in the `.env` file.
