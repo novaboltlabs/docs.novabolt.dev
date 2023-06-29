@@ -46,7 +46,7 @@ Before you start, make sure you have configured the PHP executable path in your 
 cd Desktop/nextgn
 ```
 
-Create a copy of the `.env.example` file and rename it to `.env`. This file contains the configuration variables for the application. Run the following command:
+Create a copy of the `.env.example` file and rename it to `.env`. This file contains the configuration variables for the application. If you're using a Mac or Linux machine, you can use the following command:
 
 ```bash
 cp .env.example .env
@@ -74,7 +74,11 @@ Your NextGN site is now ready to be served. Start the PHP development server by 
 php artisan serve
 ```
 
-Open your web browser and visit `http://localhost:8000` to access the NextGN application.
+Open your web browser and visit `http://127.0.0.1:8000` to access the NextGN application.
+
+:::caution
+If you're using a different port for your PHP development server, make sure to update the `APP_URL` variable in your `.env` file to match the port number.
+:::
 
 By following these steps, even if you're new to this process, you can successfully set up and run NextGN on your local machine. This allows you to explore the application's features, make customizations, and test it before deploying it to a live server.
 
