@@ -11,7 +11,7 @@ import TOCInline from '@theme/TOCInline';
 
 The default path to the admin panel is `/admin`. If you want to change it, follow the steps below:
 
-1. Open the `.env` file in the root directory of your NextGN application using a text editor.
+1. Open the `.env` file in the root directory of your Cartify application using a text editor.
 2. Add the following line at the end of the file:
     ```text
     ADMIN_PATH=admin
@@ -22,9 +22,9 @@ The default path to the admin panel is `/admin`. If you want to change it, follo
 
 ## Email provider
 
-The NextGN application may send several types of emails to customers such as order confirmation, order status update, etc. In order to send emails, follow the steps below to configure the email settings in the `.env` file.
+The Cartify application may send several types of emails to customers such as order confirmation, order status update, etc. In order to send emails, follow the steps below to configure the email settings in the `.env` file.
 
-1. Open the `.env` file in the root directory of your NextGN application using a text editor.
+1. Open the `.env` file in the root directory of your Cartify application using a text editor.
 2. Locate the following lines related to email settings:
     ```text
     MAIL_MAILER=smtp
@@ -44,7 +44,7 @@ The NextGN application may send several types of emails to customers such as ord
     * Set MAIL_PASSWORD to your SMTP password.
     * Set MAIL_ENCRYPTION to the encryption method used by your SMTP server (e.g., "tls" or "ssl").
     * Set MAIL_FROM_ADDRESS to the email address you want to use as the "From" address for outgoing emails.
-    * Set MAIL_FROM_NAME to the name you want to appear as the "From" name for outgoing emails (e.g., "NextGN Store").
+    * Set MAIL_FROM_NAME to the name you want to appear as the "From" name for outgoing emails (e.g., "Cartify Store").
 4. Save the changes and close the file.
 
 :::info
@@ -55,7 +55,7 @@ The SMTP server details and credentials can usually be obtained from your email 
 
 To set the currency used by your store, follow the steps below:
 
-1. Open the `.env` file in the root directory of your NextGN application using a text editor.
+1. Open the `.env` file in the root directory of your Cartify application using a text editor.
 2. Locate the following line:
     ```text
     APP_CURRENCY=USD

@@ -9,7 +9,7 @@ import TOCInline from '@theme/TOCInline';
 
 ## Requirements
 
-NextGN was built on top of the Laravel framework which has a few system requirements. You should ensure that your web server has the following minimum PHP version and extensions as follows:
+Cartify was built on top of the Laravel framework which has a few system requirements. You should ensure that your web server has the following minimum PHP version and extensions as follows:
 * PHP **8.1** or later
 * Mysql **8.0** or later
 
@@ -30,20 +30,20 @@ and the following PHP extensions _(which on most systems will be installed by de
 * Tokenizer PHP Extension
 * XML PHP Extension
 
-## Installing NextGN on local machine
+## Installing Cartify on local machine
 
-To try NextGN on your local machine, you can follow these step-by-step instructions. NextGN is built on the Laravel framework, which supports PHP Built-in Webserver. This allows you to test the application locally before deploying it to a server.
+To try Cartify on your local machine, you can follow these step-by-step instructions. Cartify is built on the Laravel framework, which supports PHP Built-in Webserver. This allows you to test the application locally before deploying it to a server.
 
 :::caution
 Before you start, make sure you have configured the PHP executable path in your system environment variables so that you can run PHP commands from your terminal or command prompt.
 :::
 
-1. Extract the NextGN script that you downloaded from CodeCanyon. Right-click the downloaded zip archive and select "Extract" or use a file extraction tool. Choose a location on your computer where you want to store the script.
+1. Extract the Cartify script that you downloaded from CodeCanyon. Right-click the downloaded zip archive and select "Extract" or use a file extraction tool. Choose a location on your computer where you want to store the script.
 
-2. Open your terminal or command prompt. Navigate to the directory where you extracted the NextGN script using the `cd` command. For example, if you extracted it to the "nextgn" folder on your desktop, you would use the following command:
+2. Open your terminal or command prompt. Navigate to the directory where you extracted the Cartify script using the `cd` command. For example, if you extracted it to the "cartify" folder on your desktop, you would use the following command:
 
 ```bash
-cd Desktop/nextgn
+cd Desktop/cartify
 ```
 
 Create a copy of the `.env.example` file and rename it to `.env`. This file contains the configuration variables for the application. If you're using a Mac or Linux machine, you can use the following command:
@@ -62,27 +62,27 @@ DB_PASSWORD=<your-database-password>
 
 Replace `<your-database-name>`, `<your-database-username>`, and `<your-database-password>` with the appropriate values for your database configuration.
 
-Import the `database/data/nextgn.sql` file into your database. You can use a tool like phpMyAdmin or MySQL Workbench to import the file.
+Import the `database/data/cartify.sql` file into your database. You can use a tool like phpMyAdmin or MySQL Workbench to import the file.
 
 :::info
 If you prefer to utilize sample data similar to our demo setup, you can import the `database/data/sample.sql` file. Please be aware that, to respect copyright restrictions, the sample data will not include any images.
 :::
 
-Your NextGN site is now ready to be served. Start the PHP development server by running the following command:
+Your Cartify site is now ready to be served. Start the PHP development server by running the following command:
 
 ```bash
 php artisan serve
 ```
 
-Open your web browser and visit `http://127.0.0.1:8000` to access the NextGN application.
+Open your web browser and visit `http://127.0.0.1:8000` to access the Cartify application.
 
 :::caution
 If you're using a different port for your PHP development server, make sure to update the `APP_URL` variable in your `.env` file to match the port number.
 :::
 
-By following these steps, even if you're new to this process, you can successfully set up and run NextGN on your local machine. This allows you to explore the application's features, make customizations, and test it before deploying it to a live server.
+By following these steps, even if you're new to this process, you can successfully set up and run Cartify on your local machine. This allows you to explore the application's features, make customizations, and test it before deploying it to a live server.
 
-## Installing NextGN on shared hosting
+## Installing Cartify on shared hosting
 
 Shared hosting is a type of web hosting where multiple websites are hosted on a single server. In this setup, resources such as CPU, memory, and disk space are shared among the hosted websites.
 
@@ -94,18 +94,18 @@ It is recommended to review your hosting plan and ensure it meets the requiremen
 There are many shared hosting providers that offer Laravel hosting plans. You can search for them on Google or other search engines. Some of the popular ones are [Hostinger](https://www.hostinger.com/laravel-hosting), [A2 Hosting](https://www.a2hosting.com/laravel-hosting), and [SiteGround](https://www.siteground.com/laravel-hosting.htm).
 :::
 
-To successfully install NextGN on your chosen hosting provider, follow the steps outlined below.
+To successfully install Cartify on your chosen hosting provider, follow the steps outlined below.
 
-#### Step 1: Uploading NextGN to your Hosting Server
+#### Step 1: Uploading Cartify to your Hosting Server
 
 1. Connect to your hosting server using an FTP client like FileZilla.
-2. Upload the entire NextGN directory to the root directory of your website (not inside the `public_html` folder).
+2. Upload the entire Cartify directory to the root directory of your website (not inside the `public_html` folder).
 3. Verify that the directory structure looks like this:
 
 ```text
 |- ...
 |- public_html
-|- nextgn
+|- cartify
     - app
     - bootstrap
     - config
@@ -115,7 +115,7 @@ To successfully install NextGN on your chosen hosting provider, follow the steps
 
 #### Step 2: Moving Files to the public_html Folder
 
-1. Open the `nextgn` directory on your server and locate the `public` folder.
+1. Open the `cartify` directory on your server and locate the `public` folder.
 2. Move all the files and folders inside the `public` folder to the `public_html` folder.
 3. After moving, the directory structure of your `public_html` folder should resemble this:
 
@@ -127,7 +127,7 @@ To successfully install NextGN on your chosen hosting provider, follow the steps
     |- favicon.ico
     |- index.php
     |- robots.txt
-|- nextgn
+|- cartify
     - app
     - bootstrap
     - config
@@ -149,10 +149,10 @@ To successfully install NextGN on your chosen hosting provider, follow the steps
 4. Replace them with the following lines:
     ```php
     // line 34
-    require __DIR__.'/../nextgn/bootstrap/autoload.php';
+    require __DIR__.'/../cartify/bootstrap/autoload.php';
 
     // line 47
-    $app = require_once __DIR__.'/../nextgn/bootstrap/app.php';
+    $app = require_once __DIR__.'/../cartify/bootstrap/app.php';
     ```
 5. Save the changes and close the code editor.
 
@@ -170,12 +170,12 @@ To successfully install NextGN on your chosen hosting provider, follow the steps
 1. Navigate to the **Databases** section and click on **phpMyAdmin**.
 2. Select the database you created from the left sidebar.
 3. Click on the **Import** tab.
-4. Click on **Choose File** and select the `nextgn.sql` file from the `nextgn/database/data` folder.
+4. Click on **Choose File** and select the `cartify.sql` file from the `cartify/database/data` folder.
 5. Click on **Go** to import the database tables.
 
 #### Step 6: Updating the Database Configuration
 
-1. Locate the `.env` file in the `nextgn` directory.
+1. Locate the `.env` file in the `cartify` directory.
 2. Right-click on the file and select **Edit** to open it in a text editor.
 3. Look for the following lines:
     ```text
@@ -198,7 +198,7 @@ To successfully install NextGN on your chosen hosting provider, follow the steps
 
 #### Step 8: Linking the Storage Directory
 
-1. Open the `nextgn/routes/web.php` file in a text editor.
+1. Open the `cartify/routes/web.php` file in a text editor.
 2. Add the following line at the end of the file:
     ```php
     Route::get('/linkstorage', function () {
@@ -212,11 +212,11 @@ To successfully install NextGN on your chosen hosting provider, follow the steps
 1. Open your web browser and visit your website's URL.
 2. Add "/linkstorage" to the end of the URL (e.g., https://example.com/linkstorage).
 3. If a blank page with no errors appears, the storage directory has been linked successfully.
-4. Remove the "/linkstorage" route from the `nextgn/routes/web.php` file.
+4. Remove the "/linkstorage" route from the `cartify/routes/web.php` file.
 
 #### Step 10: Moving the Storage Directory
 
-1. Inside the `nextgn/public` folder, locate the `storage` directory.
+1. Inside the `cartify/public` folder, locate the `storage` directory.
 2. Move the `storage` directory to the same level as the `index.php` file in the `public_html` folder.
 3. Confirm that your `public_html` directory structure now looks like this:
     ```text
@@ -228,4 +228,4 @@ To successfully install NextGN on your chosen hosting provider, follow the steps
     |- robots.txt
     ```
 
-That's it! You have successfully installed NextGN on your shared hosting. You can now visit your website and start using NextGN to build your store!
+That's it! You have successfully installed Cartify on your shared hosting. You can now visit your website and start using Cartify to build your store!

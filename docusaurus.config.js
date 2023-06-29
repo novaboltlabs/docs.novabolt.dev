@@ -38,9 +38,9 @@ const config = {
             /** @type {import('@docusaurus/preset-classic').Options} */
             ({
                 docs: {
-                    path: 'nextgn',
-                    routeBasePath: 'nextgn',
-                    sidebarPath: require.resolve('./sidebarsNextGn.js'),
+                    path: 'cartify',
+                    routeBasePath: 'cartify',
+                    sidebarPath: require.resolve('./sidebarsCartify.js'),
                     breadcrumbs: false,
                 },
                 blog: false,
@@ -51,23 +51,11 @@ const config = {
         ],
     ],
 
-    plugins: [
-        'docusaurus-plugin-sass',
-        [
-            '@docusaurus/plugin-content-docs',
-            {
-                id: 'cartify',
-                path: 'cartify',
-                routeBasePath: 'cartify',
-            }
-        ]
-    ],
-
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
             // Replace with your project's social card
-            image: 'img/nextgn/social-card.jpg',
+            image: 'img/cartify/social-card.jpg',
             navbar: {
                 title: 'Novabolt Docs',
                 logo: {

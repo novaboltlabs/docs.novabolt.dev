@@ -1,5 +1,5 @@
 module.exports = {
-    NextGn: [
+    Cartify: [
         {
             type: 'doc',
             id: 'introduction',
@@ -8,12 +8,12 @@ module.exports = {
         {
             type: 'link',
             label: 'Try Demo',
-            href: 'https://nextgn.novabolt.dev',
+            href: 'https://cartify.novabolt.dev',
         },
         {
             type: 'link',
             label: 'Purchase License',
-            href: 'https://novabolt.dev/nextgn',
+            href: 'https://codecanyon.net/item/cartify-laravel-ecommerce-platform-with-livewire-alpinejs-and-tailwind-css/38755184',
         },
         {
             type: 'doc',
