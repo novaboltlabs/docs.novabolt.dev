@@ -3,7 +3,7 @@ module.exports = {
         {
             type: 'doc',
             id: 'introduction',
-            label: 'Introduction',
+            label: '👋 Introduction',
         },
         {
             type: 'link',
@@ -16,10 +16,19 @@ module.exports = {
             href: 'https://nextgn.dev',
         },
         {
-            type: 'category',
-            label: 'Getting Started',
-            items: ['installation', 'configuration', 'translation'],
-            collapsed: false,
+            type: 'doc',
+            id: 'installation',
+            label: 'Installation',
+        },
+        {
+            type: 'doc',
+            id: 'configuration',
+            label: 'Configuration',
+        },
+        {
+            type: 'doc',
+            id: 'translation',
+            label: 'Translation',
         }
     ],
 };
