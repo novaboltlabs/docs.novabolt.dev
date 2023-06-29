@@ -8,12 +8,12 @@ module.exports = {
         {
             type: 'link',
             label: 'Try Demo',
-            href: 'https://demo.nextgn.dev',
+            href: 'https://nextgn.novabolt.dev',
         },
         {
             type: 'link',
             label: 'Purchase License',
-            href: 'https://nextgn.dev',
+            href: 'https://novabolt.dev/nextgn',
         },
         {
             type: 'doc',
