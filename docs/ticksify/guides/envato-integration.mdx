@@ -1,0 +1,102 @@
+---
+title: Envato Integration
+---
+
+import TOCInline from '@theme/TOCInline';
+
+# Envato Integration
+<TOCInline toc={toc}/>
+
+## Overview
+
+One of the most important features of Cartify is the ability to integrate with Envato. This feature breaks down into two
+parts and can be enabled or disabled separately from the admin panel.
+
+## The first part: Personal Token
+
+The [Personal Token](https://build.envato.com/api#token) brings the ability to fetch your products from Envato and
+import them into our application. It also helps you to verify the purchase code of the product and more...
+
+To create a Personal Token go to your [Envato account](https://build.envato.com/my-apps/) and click on the **Create a
+new token** button. Then, fill in the token name and check the following permissions:
+
+* View and search Envato sites (checked by default)
+* View your Envato Account username
+* View your email address
+* View your account profile details
+* View your items' sales history
+
+![Create a new Personal Token](/img/ticksify/envato-personal-token-editor.png)
+
+Now, check the **Terms and Condition** checkbox and click on the **Create token** button. After that the token will be
+created and you will need to save it somewhere safe because you will not be able to see it again.
+
+![Personal Token detail](/img/ticksify/envato-personal-token-detail.png)
+
+::: tip
+You can edit the token name and permissions at any time by clicking on the **Edit** button.
+:::
+
+Next, go to the admin panel and click on the **Preferences** menu item. Then navigate to the **Envato Integration** tab,
+click on the **Enable** toggle and paste the token into the **Personal Token** field. Hit **Save changes** and you are
+done. The application will verify the token and if it is valid, it will be saved to the database and you may also see
+your Envato username and email address associated with the token.
+
+![Add personal token to Ticksify](/img/ticksify/add-personal-token-to-ticksify.png)
+
+If you would like to disable the Personal Token integration, just click on the **Enable** toggle and hit
+**Save changes**. Otherwise, you can erase everything including the token, username and email address by click on the
+**Disconnect** button.
+
+And now you can use the [Import Products](/img/ticksify/ticketing-system.html#setting-up-the-product) feature to import
+your products
+from Envato.
+
+## The second part: OAuth Token
+
+The other half of Envato Integration feature is using [OAuth Token](https://build.envato.com/api#oauth) which allows
+your customers to sign in or sign up with their Envato account and fetch their purchase code automatically while
+submitting a support ticket.
+
+Unlike the Personal Token, the OAuth Token requires an access token in order to send requests to Envato API. And it is
+only valid for 1 hour, so you will need to refresh it every hour. That why we use it for the customer side only.
+
+Now let's create an OAuth Token. Go to your [Envato account](https://build.envato.com/my-apps/) and click on the
+**Register a new app** button. Then, fill in the app name and check the following permissions:
+
+* View and search Envato sites (checked by default)
+* View the user's Envato Account username
+* View the user's email address
+* View the user's account profile details
+* View the user's purchases of the app creator's items
+
+Next in the Confirmation URL field, enter the following URL:
+
+```text
+https://your-ticksify-app.tld/social-login-callback?provider=envato
+```
+
+::: warning
+Remember to replace `your-ticksify-app.tld` with your actual domain name.
+:::
+
+![Create a new OAuth Token](/img/ticksify/envato-oauth-token-editor.png)
+
+Now, check the **Terms and Condition** checkbox and click on the **Register App** button and you are done. The OAuth
+token will be created and you will need to save it somewhere safe because you will not be able to see it again.
+
+![OAuth Token detail](/img/ticksify/envato-oauth-token-detail.png)
+
+Next, go to the admin panel and click on the **Preferences** menu item. Then navigate to the **Envato Integration** tab
+and look for the **OAuth Credentials** section. Click on the **Enable** toggle and paste the **Client ID** and the
+**Client Secret** into the corresponding fields. Hit **Save changes** and you are done. The application will verify the
+token and if it is valid, it will be saved to the database.
+
+::: tip
+The Client ID will be displayed under your app name while the Client Secret is your OAuth Token you have just created.
+:::
+
+![Add OAuth credentials to Ticksify](/img/ticksify/add-oauth-credentials-to-ticksify.png)
+
+And you are done. Now your customers can sign in or sign up with their Envato account and fetch their purchase code on
+behalf of your app.

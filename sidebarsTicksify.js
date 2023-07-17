@@ -8,12 +8,12 @@ module.exports = {
         {
             type: 'link',
             label: 'Try Demo',
-            href: 'https://novabolt.dev/cartify',
+            href: 'https://novabolt.dev/ticksify',
         },
         {
             type: 'link',
             label: 'Purchase License',
-            href: 'https://codecanyon.net/item/cartify-laravel-ecommerce-platform-with-livewire-alpinejs-and-tailwind-css/38755184',
+            href: 'https://codecanyon.net/item/ticksify-customer-support-software-for-freelancers-and-smbs/39876536',
         },
         {
             type: 'doc',
@@ -29,6 +29,12 @@ module.exports = {
             type: 'doc',
             id: 'translation',
             label: '🌐 Translation',
+        },
+        {
+            type: 'category',
+            label: '📚 Guides',
+            items: ['guides/knowledge-base', 'guides/ticketing-system', 'guides/canned-responses', 'guides/envato-integration'],
+            collapsed: false,
         }
     ],
 };

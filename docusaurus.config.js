@@ -38,7 +38,8 @@ const config = {
             /** @type {import('@docusaurus/preset-classic').Options} */
             ({
                 docs: {
-                    path: 'cartify',
+                    id: 'cartify',
+                    path: 'docs/cartify',
                     routeBasePath: 'cartify',
                     sidebarPath: require.resolve('./sidebarsCartify.js'),
                     breadcrumbs: false,
@@ -48,6 +49,19 @@ const config = {
                     customCss: require.resolve('./src/css/custom.css'),
                 },
             }),
+        ],
+    ],
+
+    plugins: [
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'ticksify',
+                path: 'docs/ticksify',
+                routeBasePath: 'ticksify',
+                sidebarPath: require.resolve('./sidebarsTicksify.js'),
+                breadcrumbs: false,
+            },
         ],
     ],
 
