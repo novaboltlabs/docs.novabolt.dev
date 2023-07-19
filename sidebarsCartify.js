@@ -29,6 +29,11 @@ module.exports = {
             type: 'doc',
             id: 'translation',
             label: '🌐 Translation',
+        },
+        {
+            type: 'doc',
+            id: 'troubleshooting',
+            label: '🛠 Troubleshooting',
         }
     ],
 };

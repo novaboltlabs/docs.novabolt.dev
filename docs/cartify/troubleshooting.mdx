@@ -1,0 +1,64 @@
+---
+sidebar_position: 1
+---
+
+# Troubleshooting
+
+<details>
+    <summary>Could not find the .env file anywhere</summary>
+    <div>
+        In many operating systems, the .env file is hidden by default to prevent accidental modifications by users. If you cannot locate the .env file in the application directory, you may need to enable the "Show hidden files" option in your file explorer. Follow these steps to reveal hidden files:
+    </div>
+    <br/>
+    <div>
+        <strong>Windows File Explorer:</strong>
+        <ol>
+            <li>Open File Explorer.</li>
+            <li>Click on the "View" tab in the top menu.</li>
+            <li>Look for the "Hidden items" checkbox in the "Show/Hide" group. Check this box to display hidden files and folders.</li>
+        </ol>
+    </div>
+    <div>
+        <strong>macOS Finder:</strong>
+        <ol>
+            <li>Open Finder.</li>
+            <li>Navigate to the directory where the .env file is located.</li>
+            <li>Press "Command + Shift + Period" (⌘ + ⇧ + .) to reveal hidden files. This keyboard shortcut will toggle the visibility of hidden files.</li>
+        </ol>
+    </div>
+    <div>
+        <strong>Linux (Ubuntu, Debian, etc.):</strong>
+        <ol>
+            <li>Open the File Manager.</li>
+            <li>Press "Ctrl + H" to toggle the display of hidden files and folders.</li>
+            <li>Once you have enabled the "Show hidden files" option, you should be able to find and access the .env file in the application directory.</li>
+        </ol>
+    </div>
+</details>
+
+<details>
+    <summary>Error after editing the .env file</summary>
+    <div>
+        If you encounter an error after editing the .env file, it is likely that you have made a mistake in the file. The most common mistakes are:
+    </div>
+    <br/>
+    <div>
+        <ol>
+            <li><strong>Adding a space between the variable name</strong></li>
+            <ul>
+                <li>Mistake: APP_NAME=My App</li>
+                <li>Correct: APP_NAME="My App"</li>
+            </ul>
+            <li><strong>Adding a space between the variable name and the value</strong></li>
+            <ul>
+                <li>Mistake: APP_NAME = "My App"</li>
+                <li>Correct: APP_NAME="My App"</li>
+            </ul>
+            <li><strong>Uneven or unbalanced quotation marks in values, such as forgetting to close a pair of quotes</strong></li>
+            <ul>
+                <li>Mistake: APP_NAME="MyApp</li>
+                <li>Correct: APP_NAME="My App"</li>
+            </ul>
+        </ol>
+    </div>
+</details>

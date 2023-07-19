@@ -31,6 +31,11 @@ module.exports = {
             label: '🌐 Translation',
         },
         {
+            type: 'doc',
+            id: 'troubleshooting',
+            label: '🛠 Troubleshooting',
+        },
+        {
             type: 'category',
             label: '📚 Guides',
             items: ['guides/knowledge-base', 'guides/ticketing-system', 'guides/canned-responses', 'guides/envato-integration'],
