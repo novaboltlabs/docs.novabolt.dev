@@ -32,7 +32,7 @@ and the following PHP extensions _(which on most systems will be installed by de
 
 ## Installing Cartify on local machine
 
-To try Cartify on your local machine, you can follow these step-by-step instructions. Cartify is built on the Laravel framework, which supports PHP Built-in Webserver. This allows you to test the application locally before deploying it to a server.
+Cartify is a powerful e-commerce platform built on the Laravel framework, offering seamless integration with PHP Built-in Webserver. To easily test Cartify on your local machine before deploying it to a server, follow these simple step-by-step instructions:
 
 :::caution
 Before you start, make sure you have configured the PHP executable path in your system environment variables so that you can run PHP commands from your terminal or command prompt.
@@ -40,35 +40,26 @@ Before you start, make sure you have configured the PHP executable path in your 
 
 1. Extract the Cartify script that you downloaded from CodeCanyon. Right-click the downloaded zip archive and select "Extract" or use a file extraction tool. Choose a location on your computer where you want to store the script.
 
-2. Open your terminal or command prompt. Navigate to the directory where you extracted the Cartify script using the `cd` command. For example, if you extracted it to the "cartify" folder on your desktop, you would use the following command:
+2. Open the `.env` file using a text editor. Update the following variables to match your local environment:
+    ```text
+    DB_DATABASE=<your-database-name>
+    DB_USERNAME=<your-database-username>
+    DB_PASSWORD=<your-database-password>
+    ```
 
-```bash
-cd Desktop/cartify
-```
+    Replace `<your-database-name>`, `<your-database-username>`, and `<your-database-password>` with the appropriate values for your database configuration.
 
-Create a copy of the `.env.example` file and rename it to `.env`. This file contains the configuration variables for the application. If you're using a Mac or Linux machine, you can use the following command:
+    :::caution
+    In many operating systems, the .env file is hidden by default to prevent accidental modifications by users. If you can't find it in the Cartify directory, make sure to enable the "Show hidden files" option in your file explorer or use text editor's "Open file" option to locate and open the file.
+    :::
 
-```bash
-cp .env.example .env
-```
+3. Import the `database/data/cartify.sql` file into your database. You can use a tool like phpMyAdmin or MySQL Workbench to import the file.
 
-Open the `.env` file using a text editor. Update the following variables to match your local environment:
+    :::info
+    If you prefer to utilize sample data similar to our demo setup, instead of `cartify.sql` you can import the `sample.sql` file. Please be aware that, to respect copyright restrictions, the sample data will not include any images.
+    :::
 
-```text
-DB_DATABASE=<your-database-name>
-DB_USERNAME=<your-database-username>
-DB_PASSWORD=<your-database-password>
-```
-
-Replace `<your-database-name>`, `<your-database-username>`, and `<your-database-password>` with the appropriate values for your database configuration.
-
-Import the `database/data/cartify.sql` file into your database. You can use a tool like phpMyAdmin or MySQL Workbench to import the file.
-
-:::info
-If you prefer to utilize sample data similar to our demo setup, you can import the `database/data/sample.sql` file. Please be aware that, to respect copyright restrictions, the sample data will not include any images.
-:::
-
-Your Cartify site is now ready to be served. Start the PHP development server by running the following command:
+Your Cartify application is now ready to be served. Start the PHP development server by running the following command:
 
 ```bash
 php artisan serve
