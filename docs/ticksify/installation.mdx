@@ -7,6 +7,10 @@ import TOCInline from '@theme/TOCInline';
 # Installation
 <TOCInline toc={toc}/>
 
+:::info
+If you find it hard to follow the installation instructions below or get stuck at any point, you can always submit a [support ticket](https://help.novabolt.dev/), and we will install Ticksify for you.
+:::
+
 ## Requirements
 
 Ticksify was built on top of the Laravel framework which has a few system requirements. You should ensure that your web server has the following minimum PHP version and extensions as follows:
@@ -34,41 +38,28 @@ and the following PHP extensions _(which on most systems will be installed by de
 
 To try Ticksify on your local machine, you can follow these step-by-step instructions. Ticksify is built on the Laravel framework, which supports PHP Built-in Webserver. This allows you to test the application locally before deploying it to a server.
 
-:::caution
-Before you start, make sure you have configured the PHP executable path in your system environment variables so that you can run PHP commands from your terminal or command prompt.
-:::
-
 1. Extract the Ticksify script that you downloaded from CodeCanyon. Right-click the downloaded zip archive and select "Extract" or use a file extraction tool. Choose a location on your computer where you want to store the script.
 
-2. Open your terminal or command prompt. Navigate to the directory where you extracted the Ticksify script using the `cd` command. For example, if you extracted it to the "ticksify" folder on your desktop, you would use the following command:
-
-```bash
-cd Desktop/ticksify
-```
-
-Create a copy of the `.env.example` file and rename it to `.env`. This file contains the configuration variables for the application. If you're using a Mac or Linux machine, you can use the following command:
-
-```bash
-cp .env.example .env
-```
-
-Open the `.env` file using a text editor. Update the following variables to match your local environment:
-
-```text
-DB_DATABASE=<your-database-name>
-DB_USERNAME=<your-database-username>
-DB_PASSWORD=<your-database-password>
-```
+2. Open the `.env` file using a text editor. Update the following variables to match your local environment:
+ ```text
+ DB_DATABASE=<your-database-name>
+ DB_USERNAME=<your-database-username>
+ DB_PASSWORD=<your-database-password>
+    ```
 
 Replace `<your-database-name>`, `<your-database-username>`, and `<your-database-password>` with the appropriate values for your database configuration.
 
-Import the `database/data/ticksify.sql` file into your database. You can use a tool like phpMyAdmin or MySQL Workbench to import the file.
-
-:::info
-If you prefer to utilize sample data similar to our demo setup, you can import the `database/data/sample.sql` file after the `ticksify.sql` has been imported successfully. Please be aware that, to respect copyright restrictions, the sample data will not include any images.
+:::caution
+In many operating systems, the .env file is hidden by default to prevent accidental modifications by users. If you can't find it in the Ticksify directory, make sure to enable the "Show hidden files" option in your file explorer or use text editor's "Open file" option to locate and open the file.
 :::
 
-Your Ticksify site is now ready to be served. Start the PHP development server by running the following command:
+3. Import the `database/data/ticksify.sql` file into your database. You can use a tool like phpMyAdmin or MySQL Workbench to import the file.
+
+:::info
+If you prefer to utilize sample data similar to our demo setup, instead of `ticksify.sql` you can import the `sample.sql` file. Please be aware that, to respect copyright restrictions, the sample data will not include any images.
+:::
+
+Your Ticksify application is now ready to be served. Start the PHP development server by running the following command:
 
 ```bash
 php artisan serve
@@ -94,7 +85,78 @@ It is recommended to review your hosting plan and ensure it meets the requiremen
 There are many shared hosting providers that offer Laravel hosting plans. You can search for them on Google or other search engines. Some of the popular ones are [Hostinger](https://www.hostinger.com/laravel-hosting), [A2 Hosting](https://www.a2hosting.com/laravel-hosting), and [SiteGround](https://www.siteground.com/laravel-hosting.htm).
 :::
 
-To successfully install Ticksify on your chosen hosting provider, follow the steps outlined below.
+### Preparing the Database
+
+Before installing Ticksify on your hosting server, you need to create a database. Most hosting providers offer a database management tool like phpMyAdmin or MySQL Workbench. You can use these tools to create a database and import the database tables.
+
+#### Step 1: Creating a Database
+
+1. From your hosting control panel navigate to the **Databases** section and click on **MySQL® Databases**.
+2. Under **Create a New MySQL Database And Database User**, fill in the following fields:
+    * *MySQL database name*, enter a name for your database.
+    * *MySQL username*, enter a username for your database.
+    * *Password*, enter a password for your database.
+3. Click on **Create** to create the database and user.
+
+#### Step 2: Importing the Database Tables
+
+1. Navigate to the **Databases** section and click on **phpMyAdmin**.
+2. Select the database you created from the left sidebar.
+3. Click on the **Import** tab.
+4. Click on **Choose File** and select the `ticksify.sql` file located in the `database/data` directory of the Ticksify script.
+5. Click on **Go** to import the database tables.
+
+### Uploading the Ticksify Script
+
+The next step is to upload the Ticksify script to your hosting server. You can use an FTP client like FileZilla to upload the script to your server. There are two methods to upload the script to your server:
+
+#### Method 1: The easy way
+
+This method is the easiest way to install Ticksify on your shared hosting server.
+
+#### Step 1: Uploading Ticksify to your Hosting Server
+
+1. Connect to your hosting server using an FTP client like FileZilla.
+2. Upload the entire Ticksify directory to the root document directory of your website (usually `public_html`). Verify that the directory structure looks like this:
+
+```text
+|- ...
+|- public_html
+    - app
+    - bootstrap
+    - config
+    - database
+    - ...
+```
+
+#### Step 2: Updating the Application Configuration
+
+1. Locate the `.env` file in the `public_html` directory.
+2. Right-click on the file and select **Edit** to open it in a text editor.
+3. Locate the line that starts with `APP_URL=`. It should look like this:
+    ```text
+    APP_URL=http://127.0.0.1:8000
+    ```
+    Replace the value after the equals sign with the URL of your website (eg. `http://example.com`).
+4. Next look for the following lines:
+    ```text
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_database_username
+    DB_PASSWORD=your_database_password
+    ```
+    Replace `your_database_name`, `your_database_username`, and `your_database_password` with the appropriate values for your database configuration.
+5. Save the changes and close the file.
+
+#### Step 3: Adding the Storage Directory Link Route
+
+1. Open your web browser and visit your website's URL with `/storage-link` at the end (e.g., https://example.com/storage-link).
+2. A message will appear saying a symbolic link was created. If you see an error message, you may need to contact your hosting provider to enable the `symlink` PHP extension.
+
+Your Ticksify application is now ready to be served. Open your web browser and visit your website's URL to access the Ticksify application.
+
+#### Method 2: The secure way
+
+This method is more secure than the previous one. It involves moving the files outside the `public_html` directory and modifying the `index.php` file to point to the new location. This method is recommended if you want to keep your application files outside the public directory.
 
 #### Step 1: Uploading Ticksify to your Hosting Server
 
@@ -156,65 +218,30 @@ To successfully install Ticksify on your chosen hosting provider, follow the ste
     ```
 5. Save the changes and close the code editor.
 
-#### Step 4: Creating a Database
+#### Step 4: Updating the Application Configuration
 
-1. From your hosting control panel navigate to the **Databases** section and click on **MySQL® Databases**.
-2. Under **Create a New MySQL Database And Database User**, fill in the following fields:
-    * *MySQL database name*, enter a name for your database.
-    * *MySQL username*, enter a username for your database.
-    * *Password*, enter a password for your database.
-3. Click on **Create** to create the database and user.
-
-#### Step 5: Importing the Database Tables
-
-1. Navigate to the **Databases** section and click on **phpMyAdmin**.
-2. Select the database you created from the left sidebar.
-3. Click on the **Import** tab.
-4. Click on **Choose File** and select the `ticksify.sql` file from the `ticksify/database/data` folder.
-5. Click on **Go** to import the database tables.
-
-#### Step 6: Updating the Database Configuration
-
-1. Locate the `.env` file in the `ticksify` directory.
+1. Locate the `.env` file in the `public_html` directory.
 2. Right-click on the file and select **Edit** to open it in a text editor.
-3. Look for the following lines:
+3. Locate the line that starts with `APP_URL=`. It should look like this:
+    ```text
+    APP_URL=http://127.0.0.1:8000
+    ```
+    Replace the value after the equals sign with the URL of your website (eg. `http://example.com`).
+4. Look for the following lines:
     ```text
     DB_DATABASE=your_database_name
-    DB_USERNAME=your_username
-    DB_PASSWORD=your_password
+    DB_USERNAME=your_database_username
+    DB_PASSWORD=your_database_password
     ```
-4. Replace `your_database_name`, `your_username`, and `your_password` with the appropriate values for your database configuration.
+    Replace `your_database_name`, `your_database_username`, and `your_database_password` with the appropriate values for your database configuration.
 5. Save the changes and close the file.
 
-#### Step 7: Updating the Application URL
+#### Step 5: Adding the Storage Directory Link Route
 
-1. Open the `.env` file again.
-2. Locate the line that starts with `APP_URL=`. It should look like this:
-    ```text
-    APP_URL=http://localhost
-    ```
-3. Replace the value after the equals sign with the URL of your website.
-4. Save the changes and close the file.
+1. Open your web browser and visit your website's URL with `/storage-link` at the end (e.g., https://example.com/storage-link).
+2. A message will appear saying a symbolic link was created. If you see an error message, you may need to contact your hosting provider to enable the `symlink` PHP extension.
 
-#### Step 8: Linking the Storage Directory
-
-1. Open the `ticksify/routes/web.php` file in a text editor.
-2. Add the following line at the end of the file:
-    ```php
-    Route::get('/linkstorage', function () {
-        Artisan::call('storage:link');
-    });
-    ```
-3. Save the file and close the editor.
-
-#### Step 9: Verifying the Storage Directory Link
-
-1. Open your web browser and visit your website's URL.
-2. Add "/linkstorage" to the end of the URL (e.g., https://example.com/linkstorage).
-3. If a blank page with no errors appears, the storage directory has been linked successfully.
-4. Remove the "/linkstorage" route from the `ticksify/routes/web.php` file.
-
-#### Step 10: Moving the Storage Directory
+#### Step 6: Moving the Storage Directory
 
 1. Inside the `ticksify/public` folder, locate the `storage` directory.
 2. Move the `storage` directory to the same level as the `index.php` file in the `public_html` folder.
@@ -228,23 +255,4 @@ To successfully install Ticksify on your chosen hosting provider, follow the ste
     |- robots.txt
     ```
 
-That's it! You have successfully installed Ticksify on your shared hosting. You may now continue to the next section to set up the application and access the admin panel.
-
-## Setting up the application and accessing the admin panel
-
-After Ticksify has been installed, the next step is to set up the application and access the admin panel.
-
-### Setting up the application
-
-The setup process includes the creation of an admin user and the configuration of the application's title and description.
-
-:::tip
-You may skip this step if you have imported our sample data.
-:::
-
-To set up the application, navigate to your website's URL eg. https://example.com/setup (replace example.com with your actual domain that you have configured in your .env file) and follow the on-screen instructions.
-
-
-### Accessing the admin panel
-
-To access the admin panel, navigate to your website's URL eg. https://example.com/agent (replace example.com with your actual domain that you have configured in your .env file) and log in using the credentials you created during the setup process.
+Your Ticksify application is now ready to be served. Open your web browser and visit your website's URL to access the Ticksify application.
